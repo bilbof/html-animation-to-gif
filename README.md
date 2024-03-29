@@ -8,9 +8,10 @@ This process works for HTML elements animated with CSS (keyframes, transformatio
 
 1. Animate an HTML Element
 2. At each frame
-    a. Convert DOM element to PNG
-    b. Write PNG to Canvas
-    c. Encode canvas as GIF
+    1. Convert DOM element to PNG
+    1. Write PNG to Canvas
+    1. Encode canvas as GIF
+
 
 ## Status
 
