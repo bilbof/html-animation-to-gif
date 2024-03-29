@@ -1,0 +1,105 @@
+<head>
+  <!-- PNG generation libs -->
+  <script type="text/javascript" src="./dom-to-image.js"></script>
+
+  <!-- GIF generation libs -->
+  <script type="text/javascript" src="./jsgif/LZWEncoder.js"></script>
+  <script type="text/javascript" src="./jsgif/NeuQuant.js"></script>
+  <script type="text/javascript" src="./jsgif/GIFEncoder.js"></script>
+
+  <style>
+    #content  {
+      display: grid;
+      display: none;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 10px;
+    }
+    #content frame {
+      border: 1px solid black;
+      padding: 10px;
+      text-align: center;
+      height: 100px;
+      background-color: white;
+    }
+    #bitmap {
+      /* display: none; */
+    }
+
+    @keyframes gradient {
+      0% {
+        background-position: 0% 0%;
+      }
+      25% {
+        background-position: 0% 100%;
+      }
+      50% {
+        background-position: 100% 100%;
+      }
+      75% {
+        background-position: 100% 0%;
+      }
+      100% {
+        background-position: 0% 0%;
+      }
+    }
+
+    #gradient-frame {
+      background: -30% 0/50vw min(70vw,700px) no-repeat radial-gradient(at top center,#92beff,#92beff60 30%,#0000 70%),90% 50px /40vw 40vw no-repeat radial-gradient(at center,#7080ff,#7080ff60 30%,#0000 70%),55% 250px /30vw 30vw no-repeat radial-gradient(at center,#9afcff,#9afcff60 30%,#0000 70%);
+      animation: gradient 10s infinite linear;
+      height: 100px;
+      width: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2em;
+    }
+
+    #gradient-frame, #bitmap, #frameboy-1 img {
+      height: 100px;
+      width: 200px;
+    }
+
+    .frameboys {
+      display: flex;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 10px;
+    }
+  </style>
+
+</head>
+<body>
+  <!-- We generate PNG from these elements -->
+  <h1>CSS animation to GIF pipeline</h1>
+  <div id="content">
+    <div class="frame" id="frame-0"><h2>Frame 0</h2></div>
+    <div class="frame" id="frame-1"><h2>Frame 1</h2></div>
+    <div class="frame" id="frame-2"><h2>Frame 2</h2></div>
+    <div class="frame" id="frame-3"><h2>Frame 3</h2></div>
+    <div class="frame" id="frame-4"><h2>Frame 4</h2></div>
+    <div class="frame" id="frame-5"><h2>Frame 5</h2></div>
+    <div class="frame" id="frame-6"><h2>Frame 6</h2></div>
+    <div class="frame" id="frame-7"><h2>Frame 7</h2></div>
+    <div class="frame" id="frame-8"><h2>Frame 8</h2></div>
+    <div class="frame" id="frame-9"><h2>Frame 9</h2></div>
+  </div>
+
+
+  <!-- We stick the GIF frames in this guy -->
+  <p id="loading">Loading...</p>
+  <div class="frameboys">
+    <div class="frameboy" id="css">
+      <h2>CSS Animation</h2>
+      <div id="gradient-frame">🎉</div>
+    </div>
+    <div class="frameboy" id="frameboy-0">
+      <h2>Canvas bitmap</h2>
+      <canvas id="bitmap"></canvas>
+    </div>
+    <div class="frameboy" id="frameboy-1">
+      <h2>GIF</h2>
+    </div>
+  </div>
+  
+  <!-- Tie them all together -->
+  <script type="text/javascript" src="./gifmaker.js"></script>
+</body>
